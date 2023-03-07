@@ -19,8 +19,10 @@ services:
       - internal
     volumes:
       - ./src/:/var/www/html/
+      - ${SSH_AUTH_SOCK}:/ssh-socket:ro
     environment:
       PHP_IDE_CONFIG: "serverName=docker-php"
+      SSH_AUTH_SOCK: "/ssh-socket"
     extra_hosts:
       - host.docker.internal:host-gateway
 networks:
